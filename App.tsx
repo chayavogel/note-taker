@@ -7,6 +7,10 @@ export default function App() {
 
   const [text, setText] = useState<string>("");
 
+  const saveNote = async () => {
+    await AsyncStorage.setItem('note', text)
+  }
+
   return (
     <View style={styles.container}>
       <Text>Welcome!</Text>
@@ -19,7 +23,7 @@ export default function App() {
       />
       <Button 
         title="Save Note"
-        onPress={() => console.log("i was pressed", text)}
+        onPress={saveNote}
       />
     </View>
   );
