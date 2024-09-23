@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { useState } from "react";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NoteTakingInput } from './components/NoteTakingInput';
 import { HomeScreen } from './screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
