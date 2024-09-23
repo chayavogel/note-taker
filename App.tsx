@@ -2,29 +2,24 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { useState } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { NoteTakingInput } from './components/NoteTakingInput';
+import { HomeScreen } from './components/HomeScreen';
 
 export default function App() {
 
-  const [text, setText] = useState<string>("");
+  const [shouldCreateNewNote, setShouldCreateNewNote] = useState<boolean>(false)
 
-  const saveNote = async () => {
+  const saveNote = async (text: string) => {
     await AsyncStorage.setItem('note', text)
+    setShouldCreateNewNote(false);
   }
 
   return (
     <View style={styles.container}>
-      <Text>Welcome!</Text>
       <StatusBar style="auto" />
-      <TextInput 
-        multiline={true}
-        style={styles.TextInput}
-        value={text}
-        onChangeText={setText}
-      />
-      <Button 
-        title="Save Note"
-        onPress={saveNote}
-      />
+      {shouldCreateNewNote ? (<NoteTakingInput saveNote={saveNote}/>):
+      <HomeScreen toggleNewNote={setShouldCreateNewNote}/>
+      }
     </View>
   );
 }
@@ -36,13 +31,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  TextInput: {
-    backgroundColor: "#ffb70342",
-    width: "100%",
-    height: 200,
-    fontSize: 16,
-    paddingHorizontal: 20,
-    paddingTop: 30,
-    paddingBottom: 20,
-  } 
 });
