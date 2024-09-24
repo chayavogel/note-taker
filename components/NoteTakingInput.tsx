@@ -16,6 +16,7 @@ export const NoteTakingInput: React.FC<Props> = ( {saveNote} ) => {
                 style={styles.TextInput}
                 value={text}
                 onChangeText={setText}
+                autoFocus={true}
             />
             <Button 
                 title="Save Note"

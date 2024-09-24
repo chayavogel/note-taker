@@ -16,7 +16,17 @@ export default function App() {
     <NavigationContainer>
       <StatusBar style="auto" />
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen 
+        name="Home" 
+        component={HomeScreen} 
+        options={({navigation}) => {
+          return {
+            headerTitle: "All Notes",
+            headerRight: ()=>  <Button 
+            onPress={() => navigation.navigate("EditNote")} 
+            title="New Note"
+            />
+        }}}/>
         <Stack.Screen name="EditNote" component={EditNoteScreen} />
       </Stack.Navigator>
     </NavigationContainer>
