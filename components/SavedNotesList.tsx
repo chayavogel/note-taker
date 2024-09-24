@@ -15,7 +15,10 @@ export const SavedNotesList: React.FC = () => {
         <View style={styles.container}>
             <ScrollView>
             {notes.map(note => (
-                <View style={styles.row}>
+                <View 
+                style={styles.row}
+                key={note.id}
+                >
                 <Text 
                     key={note.id} 
                     style={styles.note}

@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { EditNoteScreen } from './screens/EditNoteScreen';
 import { RootStackParamList } from './types';
+import { NewNoteButton } from './components/NewNoteButton';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -22,10 +23,7 @@ export default function App() {
         options={({navigation}) => {
           return {
             headerTitle: "All Notes",
-            headerRight: ()=>  <Button 
-            onPress={() => navigation.navigate("EditNote")} 
-            title="New Note"
-            />
+            headerRight: ()=>  <NewNoteButton/>
         }}}/>
         <Stack.Screen name="EditNote" component={EditNoteScreen} />
       </Stack.Navigator>
